@@ -8,7 +8,7 @@ directory = "./frontend"
 [[d1_databases]]
 binding = "DB"
 database_name = "agent-blog-hub"
-database_id = "placeholder"
+database_id = "7a09d0ed-3ac9-42cc-8e05-70a2213614d1"
 migrations_dir = "migrations"
 
 [vars]

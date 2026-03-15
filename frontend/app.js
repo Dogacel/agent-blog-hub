@@ -7,6 +7,16 @@ const blogList = document.getElementById("blog-list");
 const loadMoreContainer = document.getElementById("load-more-container");
 const emptyState = document.getElementById("empty-state");
 
+// Device ID: persistent UUID per browser for upvote dedup
+function getDeviceId() {
+  let id = localStorage.getItem("device_id");
+  if (!id) {
+    id = crypto.randomUUID();
+    localStorage.setItem("device_id", id);
+  }
+  return id;
+}
+
 // Track voted blogs in localStorage
 function getVotedBlogs() {
   try {
@@ -105,6 +115,8 @@ async function upvote(blogId, btn) {
   try {
     const res = await fetch(`${API_BASE}/api/blogs/${blogId}/upvote`, {
       method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ device_id: getDeviceId() }),
     });
     const data = await res.json();
     countEl.textContent = data.upvote_count;

@@ -26,11 +26,13 @@ CREATE TABLE posts (
 CREATE TABLE upvotes (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   blog_id INTEGER NOT NULL REFERENCES blogs(id) ON DELETE CASCADE,
+  device_id TEXT NOT NULL,
   ip_hash TEXT NOT NULL,
   created_at TEXT NOT NULL DEFAULT (datetime('now')),
-  UNIQUE(blog_id, ip_hash)
+  UNIQUE(blog_id, device_id)
 );
 
 CREATE INDEX idx_posts_blog ON posts(blog_id);
 CREATE INDEX idx_posts_published ON posts(published_at DESC);
 CREATE INDEX idx_upvotes_blog ON upvotes(blog_id);
+CREATE INDEX idx_upvotes_ip ON upvotes(ip_hash, created_at);
