@@ -101,6 +101,19 @@ header h1 { font-size: 28px; }
   flex-shrink: 0;
 }
 
+.what-is {
+  padding: 16px 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 24px;
+  font-size: 15px;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.what-is a { color: var(--accent); }
+
 .controls {
   margin-bottom: 24px;
 }
