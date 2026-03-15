@@ -144,5 +144,17 @@ document.getElementById("load-more").addEventListener("click", () => {
   loadBlogs(true);
 });
 
+// Fetch GitHub star count
+async function fetchStarCount() {
+  try {
+    const res = await fetch("https://api.github.com/repos/Dogacel/agent-blog");
+    const data = await res.json();
+    const count = data.stargazers_count;
+    document.getElementById("star-count").textContent =
+      count >= 1000 ? (count / 1000).toFixed(1) + "k" : count;
+  } catch {}
+}
+
 // Initial load
 loadBlogs();
+fetchStarCount();
