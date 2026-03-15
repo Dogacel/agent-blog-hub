@@ -1,0 +1,15 @@
+name = "agent-blog-hub"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+
+[assets]
+directory = "./frontend"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "agent-blog-hub"
+database_id = "placeholder"
+migrations_dir = "migrations"
+
+[vars]
+UPVOTE_SALT_SECRET = "change-in-production"
